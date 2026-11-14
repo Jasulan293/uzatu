@@ -129,16 +129,12 @@ export const LocationSection: React.FC = () => {
                 <Navigation className="w-6 h-6 text-[#F1D98A]" aria-hidden="true" />
               </div>
               <div className="mt-3 liquid-glass-subtle rounded-2xl px-4 py-2.5">
-                <p className="font-serif-display text-lg font-semibold text-[#FAF3E7]">
-                  {CONFIG.venueName}
-                </p>
                 <p className="text-xs text-[#F1D98A] mt-0.5">{CONFIG.city}</p>
               </div>
             </div>
 
             <div className="relative z-10 flex items-center justify-between text-xs text-[#FAF3E7]/75">
               <span>{CONFIG.city}</span>
-              <span>{CONFIG.venueName}</span>
             </div>
           </div>
         </div>
