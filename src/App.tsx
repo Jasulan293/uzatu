@@ -87,6 +87,14 @@ export default function App() {
       setIsPlaying(false);
     };
 
+    // Қолданушы басқа қосымшаға/браузер қойындысына өткенде музыканы тоқтату
+    const stopMusicWhenHidden = () => {
+      if (document.visibilityState === 'hidden') {
+        stopMusicOnExit();
+      }
+    };
+
+    document.addEventListener('visibilitychange', stopMusicWhenHidden);
     window.addEventListener('pagehide', stopMusicOnExit);
     window.addEventListener('beforeunload', stopMusicOnExit);
 
@@ -99,6 +107,7 @@ export default function App() {
       events.forEach((evt) => {
         window.removeEventListener(evt, onFirstTouchOrClick, { capture: true });
       });
+      document.removeEventListener('visibilitychange', stopMusicWhenHidden);
       window.removeEventListener('pagehide', stopMusicOnExit);
       window.removeEventListener('beforeunload', stopMusicOnExit);
       audio.pause();
@@ -331,14 +340,18 @@ export default function App() {
               </svg>
             </div>
 
-            <p className="text-xs sm:text-sm font-medium text-[#F1D98A] tracking-[0.28em] uppercase">
-              Той салтанатына шақыру
-            </p>
-
-            {/* Үлкен өрнекті «Қыз ұзату» жазуы */}
-            <h1 className="mt-3 font-serif-display text-6xl sm:text-8xl lg:text-[8.5rem] font-semibold italic tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-[#FAF3E7] via-[#F1D98A] to-[#D4AF37] leading-[1.04] drop-shadow-[0_10px_28px_rgba(24,2,6,0.75)]">
-              {CONFIG.tagline}
+            {/* Алғашқы беттегі басты жазу — қалыңдықтың аты */}
+            <h1 className="mt-1 w-full bride-letter flex items-center justify-center">
+              <BrideCalligraphy
+                src={CONFIG.brideNameImage}
+                alt={CONFIG.brideName}
+                className="w-full [&>img]:!max-w-[min(92vw,760px)]"
+              />
             </h1>
+
+            <p className="mt-1 font-serif-display text-3xl sm:text-5xl lg:text-6xl font-semibold italic tracking-wide text-transparent bg-clip-text bg-gradient-to-b from-[#FAF3E7] via-[#F1D98A] to-[#D4AF37] leading-tight drop-shadow-[0_8px_24px_rgba(24,2,6,0.7)]">
+              {CONFIG.tagline}
+            </p>
 
             {/* Төменгі өрнекті бөлгіш */}
             <KazakhDivider className="mt-6 mb-6" />
