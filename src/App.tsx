@@ -81,6 +81,15 @@ export default function App() {
       void tryStartMusic();
     };
 
+    const stopMusicOnExit = () => {
+      audio.pause();
+      audio.currentTime = 0;
+      setIsPlaying(false);
+    };
+
+    window.addEventListener('pagehide', stopMusicOnExit);
+    window.addEventListener('beforeunload', stopMusicOnExit);
+
     const events: Array<keyof WindowEventMap> = ['pointerdown', 'touchstart', 'click', 'keydown'];
     events.forEach((evt) => {
       window.addEventListener(evt, onFirstTouchOrClick, { capture: true, passive: true });
@@ -90,6 +99,8 @@ export default function App() {
       events.forEach((evt) => {
         window.removeEventListener(evt, onFirstTouchOrClick, { capture: true });
       });
+      window.removeEventListener('pagehide', stopMusicOnExit);
+      window.removeEventListener('beforeunload', stopMusicOnExit);
       audio.pause();
     };
   }, []);
@@ -337,8 +348,7 @@ export default function App() {
               <span aria-hidden="true">·</span>{' '}
               <span className="tabular-nums whitespace-nowrap">{CONFIG.timeDisplay}</span>{' '}
               <span aria-hidden="true">·</span>{' '}
-              <span className="whitespace-nowrap">{CONFIG.city},</span>{' '}
-              <span className="whitespace-nowrap">{CONFIG.venueName}</span>
+              <span className="whitespace-nowrap">{CONFIG.city}</span>
             </p>
 
             <a
@@ -545,8 +555,8 @@ export default function App() {
                     <p className="text-[11px] font-medium text-[#F1D98A]/90 tracking-[0.14em] uppercase">
                       Өтетін орны
                     </p>
-                    <h3 className="mt-1 font-serif-display text-xl sm:text-[1.45rem] font-semibold text-[#FAF3E7] leading-snug md:whitespace-nowrap">
-                      {CONFIG.venueName}
+                    <h3 className="mt-1 font-serif-display text-xl sm:text-[1.45rem] font-semibold text-[#FAF3E7] leading-snug">
+                      Мекенжай
                     </h3>
                     <p className="mt-0.5 text-xs sm:text-sm text-[#FAF3E7]/80">
                       {CONFIG.city}
