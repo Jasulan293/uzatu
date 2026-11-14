@@ -1,0 +1,6 @@
+{
+  "name": "Айзере — Қыз Ұзату Тойына Шақыру",
+  "description": "Қазақи нақыштағы Liquid Glass стиліндегі онлайн Қыз ұзату шақыру сайты.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

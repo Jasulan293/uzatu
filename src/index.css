@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #B3122B;
+  --primary-dark: #6B0F1A;
+  --primary-deep: #2B040B;
+  --accent: #D4AF37;
+  --accent-light: #F1D98A;
+  --champagne: #FAF3E7;
+  --glass-bg: rgba(255, 255, 255, 0.13);
+  --glass-bg-strong: rgba(255, 255, 255, 0.19);
+  --glass-border: rgba(255, 255, 255, 0.35);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--primary-deep);
+    color: var(--champagne);
+    overflow-x: clip;
+  }
+
+  body {
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, .font-serif-display {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    text-wrap: balance;
+  }
+
+  .font-script {
+    font-family: 'Marck Script', 'Cormorant Garamond', cursive;
+  }
+}
+
+/* Apple Liquid Glass surface */
+.liquid-glass {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.09) 55%,
+    rgba(255, 255, 255, 0.14) 100%
+  );
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    0 24px 56px -16px rgba(18, 2, 6, 0.55),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.42),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.08);
+}
+
+.liquid-glass-subtle {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(165%);
+  -webkit-backdrop-filter: blur(20px) saturate(165%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 14px 36px -12px rgba(18, 2, 6, 0.45),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Liquid Glass Form Input */
+.liquid-input {
+  background: rgba(255, 255, 255, 0.11);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.18);
+  transition: border-color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.liquid-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.17);
+  border-color: var(--accent-light);
+  box-shadow:
+    0 0 0 3px rgba(241, 217, 138, 0.22),
+    inset 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+
+/* Background Ken Burns & Floating Blobs */
+@keyframes kenBurnsSlow {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.09) translate3d(-1.2%, -1%, 0);
+  }
+  100% {
+    transform: scale(1.12) translate3d(1%, 0.8%, 0);
+  }
+}
+
+@keyframes floatOrbOne {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6vw, 4vh, 0) scale(1.12);
+  }
+}
+
+@keyframes floatOrbTwo {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  50% {
+    transform: translate3d(-7vw, -5vh, 0) scale(0.95);
+  }
+}
+
+@keyframes digitFlip {
+  0% {
+    transform: perspective(400px) rotateX(-28deg) translateY(-4px);
+    opacity: 0.65;
+  }
+  100% {
+    transform: perspective(400px) rotateX(0deg) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes glassShine {
+  0% {
+    transform: translateX(-120%) skewX(-20deg);
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.45;
+  }
+  100% {
+    transform: translateX(220%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+@keyframes gentleShimmer {
+  0%, 100% {
+    opacity: 0.85;
+    text-shadow: 0 0 24px rgba(241, 217, 138, 0.25);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 38px rgba(241, 217, 138, 0.55);
+  }
+}
+
+.animate-ken-burns {
+  animation: kenBurnsSlow 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-orb-1 {
+  animation: floatOrbOne 22s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-orb-2 {
+  animation: floatOrbTwo 27s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-digit-flip {
+  animation: digitFlip 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-glass-shine {
+  animation: glassShine 850ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-gentle-shimmer {
+  animation: gentleShimmer 4.5s ease-in-out infinite;
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-ken-burns,
+  .animate-orb-1,
+  .animate-orb-2,
+  .animate-digit-flip,
+  .animate-glass-shine,
+  .animate-gentle-shimmer {
+    animation: none !important;
+  }
+}
