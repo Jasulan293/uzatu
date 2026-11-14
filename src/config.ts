@@ -76,7 +76,7 @@ export const CONFIG: InvitationConfig = {
   address: 'Кентау қаласы, «Хан Төре 3» тойханасы',
   mapUrl:
     'https://2gis.kz/turkestan/geo/70000001103309345?inv_by=bbd6e645e7e249c6ab0efaf36be3e74b&inv_ts=1794679102',
-  musicUrl: '/assets/aistudio/5588669ada1c6a66638df27bdc4c0666_7be29a14.mp3',
+  musicUrl: '/assets/aistudio/5588669ada1c6a66638df27bdc4c0666.mp3',
   brideNameImage: '/assets/aistudio/image_9878f487.png',
   portraitPhoto: {
     url: USER_BRIDE_PHOTO,
