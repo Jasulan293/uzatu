@@ -78,7 +78,7 @@ export const CountdownSection: React.FC = () => {
               Ақ тілек пен қуаныш күні келді!
             </p>
             <p className="mt-2 text-sm sm:text-base text-[#FAF3E7]/85">
-              {CONFIG.dateDisplay} · {CONFIG.venueName}
+{CONFIG.dateDisplay}
             </p>
           </div>
         ) : (
@@ -92,7 +92,6 @@ export const CountdownSection: React.FC = () => {
               <span className="mx-2 text-[#F1D98A]/60" aria-hidden="true">·</span>
               <span className="tabular-nums whitespace-nowrap">{CONFIG.timeDisplay}</span>
               <span className="mx-2 text-[#F1D98A]/60" aria-hidden="true">·</span>
-              <span className="whitespace-nowrap">{CONFIG.venueName}</span>
             </p>
 
             {/* Біртұтас 4 бөлікті уақыт панорамасы (бөлек карточкасыз) */}
